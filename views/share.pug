@@ -1,0 +1,27 @@
+extends base
+
+block content
+  main.main
+    .share-form
+      h2.heading-secondary.ma-bt-lg share your live experience
+      form.form.form--share
+        .form__group
+          label.form__label(for='performancer') Performancer
+          input#performancer.form__input(type='text', placeholder='The cure', required)     
+        .form__group
+          label.form__label(for='date') Date
+          input#date.form__input(type='date', placeholder='2007/12/12', required)       
+        .form__group
+          label.form__label(for='location') Location
+          input#location.form__input(type='text', placeholder="New York")
+        .form__group
+          label.form__label(for='rating') Rating
+          input#rating.form__input(type='rating', placeholder='4.0')
+        .form__group.ma-bt-md
+          label.form__label(for='shares') Comments
+          input#shares.form__input(type='text', placeholder='Please leave your comments.', required)
+        .form__group.form__photo-upload
+            input.form__upload(type='file', accept='image/*', id='images', name='images')
+            label(for='images') upload live images
+        .form__group.right
+          button.btn.btn--green submit 

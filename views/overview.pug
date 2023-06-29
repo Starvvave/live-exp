@@ -1,0 +1,25 @@
+extends base
+
+block content
+  main.main
+    .card-container
+    
+      each live in lives
+        .card
+          .card__header
+            .card__picture
+              .card__picture-overlay &nbsp;
+              img.card__picture-img(src=`/img/lives/${live.imageCover}`, alt=`${live.performancer}`)
+            h3.heading-tertirary
+              span= live.performancer
+
+          .card__details
+            h4.card__sub-heading= `${live.date}`
+            p.card__text= live.location 
+            
+          .card__footer
+            p.card__ratings
+              span.card__footer-value= live.ratingsAverage
+              | 
+              span.card__footer-text= `rating (${live.ratingsQuantity})`
+            a.btn.btn--green.btn--small(href=`/lives/${live._id}`) Details

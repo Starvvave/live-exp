@@ -1,0 +1,39 @@
+extends base
+include _myReviewCard
+
+mixin navItem(link, text, icon, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`img/icons.svg#icon-${icon}`)
+      | #{text}
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('#', 'Settings', 'settings', true)
+          +navItem('/my-reviews', 'My reviews', 'star')
+
+        - if (user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('#', 'Manage lives', 'map')
+              +navItem('#', 'Manage users', 'users')
+              +navItem('#', 'Manage reviews', 'star')
+
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md= `Your live experience:`
+
+          .description-box
+            each r in review
+              h2.heading-third.ma-bt-lg= `${r.live.performancer}'s live in ${r.live.location}, ${r.live.date}: `
+                p.description__text= r.review
+
+        
+                
+                
+                
